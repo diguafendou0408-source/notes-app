@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="一个保存在浏览器本地的简洁笔记应用" />
+    <title>我的笔记</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <aside class="sidebar" aria-label="笔记列表">
+        <div class="sidebar-header">
+          <div>
+            <p class="eyebrow">NOTES</p>
+            <h1>我的笔记</h1>
+          </div>
+          <button id="new-note-button" class="icon-button" type="button" aria-label="新建笔记" title="新建笔记">+</button>
+        </div>
+        <p id="note-count" class="note-count" aria-live="polite"></p>
+        <nav id="note-list" class="note-list" aria-label="选择笔记"></nav>
+      </aside>
+
+      <section class="editor-panel" aria-label="笔记编辑器">
+        <div id="empty-state" class="empty-state" hidden>
+          <div class="empty-icon">✦</div>
+          <h2>还没有笔记</h2>
+          <p>点击左侧加号，写下第一条想法。</p>
+          <button id="empty-new-note-button" class="primary-button" type="button">新建笔记</button>
+        </div>
+
+        <div id="editor" class="editor">
+          <header class="editor-header">
+            <p id="note-meta" class="note-meta" aria-live="polite"></p>
+            <button id="delete-note-button" class="delete-button" type="button">删除笔记</button>
+          </header>
+          <label class="sr-only" for="note-title">笔记标题</label>
+          <input id="note-title" class="note-title" type="text" maxlength="80" placeholder="无标题笔记" autocomplete="off" />
+          <div class="editor-workspace">
+            <section class="markdown-pane" aria-label="Markdown 编辑">
+              <div class="pane-heading">
+                <span>Markdown 编辑</span>
+                <span class="pane-hint">支持 #、**粗体**、列表等</span>
+              </div>
+              <label class="sr-only" for="note-content">笔记 Markdown 内容</label>
+              <textarea id="note-content" class="note-content" placeholder="# 开始记录&#10;&#10;在这里使用 Markdown 写下你的想法…"></textarea>
+            </section>
+            <section class="preview-pane" aria-label="Markdown 实时预览">
+              <div class="pane-heading">
+                <span>实时预览</span>
+                <span class="pane-hint">自动同步</span>
+              </div>
+              <article id="note-preview" class="note-preview" aria-live="polite"></article>
+            </section>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <dialog id="delete-dialog" class="confirm-dialog" aria-labelledby="delete-dialog-title">
+      <form method="dialog">
+        <h2 id="delete-dialog-title">删除这条笔记？</h2>
+        <p>删除后无法恢复。</p>
+        <div class="dialog-actions">
+          <button class="cancel-button" value="cancel" type="submit">取消</button>
+          <button id="confirm-delete-button" class="confirm-delete-button" value="confirm" type="submit">确认删除</button>
+        </div>
+      </form>
+    </dialog>
+    <script src="app.js"></script>
+  </body>
+</html>
