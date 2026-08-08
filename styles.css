@@ -86,7 +86,7 @@ h1 { margin: 0; font-size: 1.35rem; letter-spacing: -0.03em; }
 .preview-pane { border-left: 1px solid #c9dcf8; padding-left: 18px; }
 .pane-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; min-height: 27px; padding-bottom: 9px; border-bottom: 1px solid #d9e6fa; color: #50347b; font-size: 0.84rem; font-weight: 750; }
 .pane-hint { color: #917caf; font-size: 0.72rem; font-weight: 500; white-space: nowrap; }
-.note-content { width: 100%; min-height: 310px; flex: 1; resize: none; border: 0; border-radius: 8px; padding: 14px; color: #fff; background: #12151c; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 0.9rem; line-height: 1.8; }
+.note-content { width: 100%; min-height: 310px; flex: 1; resize: none; border: 0; border-radius: 8px; padding: 14px; color: #c9e5ff; background: #12151c; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 0.9rem; line-height: 1.8; }
 .note-title:focus, .note-content:focus { outline: none; }
 .note-content::placeholder { color: #b8c0ce; }
 .note-preview { min-height: 310px; flex: 1; overflow-wrap: anywhere; padding: 14px 0; color: #4d2f79; line-height: 1.75; }
