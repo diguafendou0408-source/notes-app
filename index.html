@@ -20,11 +20,11 @@
         <p id="note-count" class="note-count" aria-live="polite"></p>
         <nav id="note-list" class="note-list" aria-label="选择笔记"></nav>
         <div class="theme-control">
-          <span id="theme-label" class="theme-label">浅色模式</span>
-          <label class="theme-switch" for="theme-toggle">
-            <input id="theme-toggle" type="checkbox" role="switch" aria-label="切换深色模式" />
-            <span class="theme-track" aria-hidden="true"><span class="theme-thumb"></span></span>
-          </label>
+          <div class="theme-control-header">
+            <span id="theme-label" class="theme-label">浅色模式</span>
+            <span class="theme-end-label" aria-hidden="true">深色</span>
+          </div>
+          <input id="theme-toggle" class="theme-slider" type="range" min="0" max="100" value="0" aria-label="拖动切换浅色或深色主题" />
         </div>
       </aside>
 

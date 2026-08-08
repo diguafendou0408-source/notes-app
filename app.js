@@ -23,11 +23,12 @@
 
   let state = loadState();
 
-  function applyTheme(theme) {
+  function applyTheme(theme, syncSlider = true) {
     const isDark = theme === "dark";
     document.documentElement.classList.toggle("theme-dark", isDark);
     document.documentElement.style.colorScheme = isDark ? "dark" : "light";
-    elements.themeToggle.checked = isDark;
+    if (syncSlider) elements.themeToggle.value = isDark ? "100" : "0";
+    elements.themeToggle.setAttribute("aria-valuetext", isDark ? "深色模式" : "浅色模式");
     elements.themeLabel.textContent = isDark ? "深色模式" : "浅色模式";
   }
 
@@ -258,14 +259,17 @@
   elements.deleteDialog.addEventListener("close", () => {
     if (elements.deleteDialog.returnValue === "confirm") confirmDeletion();
   });
-  elements.themeToggle.addEventListener("change", () => {
-    const theme = elements.themeToggle.checked ? "dark" : "light";
+  elements.themeToggle.addEventListener("input", () => {
+    const theme = Number(elements.themeToggle.value) >= 50 ? "dark" : "light";
     try {
       localStorage.setItem(THEME_KEY, theme);
     } catch (error) {
       console.warn("无法保存主题偏好。", error);
     }
-    applyTheme(theme);
+    applyTheme(theme, false);
+  });
+  elements.themeToggle.addEventListener("change", () => {
+    applyTheme(Number(elements.themeToggle.value) >= 50 ? "dark" : "light");
   });
   elements.title.addEventListener("input", updateSelectedNote);
   elements.content.addEventListener("input", updateSelectedNote);
