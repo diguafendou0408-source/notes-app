@@ -37,6 +37,8 @@ button { cursor: pointer; }
 }
 
 .sidebar-header, .editor-header { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.sidebar-header { border-radius: 12px; padding: 14px; color: #f4f8ff; background: #000; }
+.sidebar-header .eyebrow { color: #a9d9ff; }
 .eyebrow { margin: 0 0 4px; color: #6640a5; font-size: 0.7rem; font-weight: 800; letter-spacing: 0.15em; }
 h1 { margin: 0; font-size: 1.35rem; letter-spacing: -0.03em; }
 .icon-button {
