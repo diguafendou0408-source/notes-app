@@ -2,6 +2,7 @@
   "use strict";
 
   const STORAGE_KEY = "codex-learning-notes-v1";
+  const THEME_KEY = "codex-learning-notes-theme";
   const $ = (selector) => document.querySelector(selector);
   const elements = {
     list: $("#note-list"),
@@ -16,9 +17,27 @@
     emptyNewButton: $("#empty-new-note-button"),
     deleteButton: $("#delete-note-button"),
     deleteDialog: $("#delete-dialog"),
+    themeToggle: $("#theme-toggle"),
+    themeLabel: $("#theme-label"),
   };
 
   let state = loadState();
+
+  function applyTheme(theme) {
+    const isDark = theme === "dark";
+    document.documentElement.classList.toggle("theme-dark", isDark);
+    document.documentElement.style.colorScheme = isDark ? "dark" : "light";
+    elements.themeToggle.checked = isDark;
+    elements.themeLabel.textContent = isDark ? "深色模式" : "浅色模式";
+  }
+
+  function loadTheme() {
+    try {
+      return localStorage.getItem(THEME_KEY) === "dark" ? "dark" : "light";
+    } catch (error) {
+      return "light";
+    }
+  }
 
   function createNote() {
     const now = Date.now();
@@ -239,9 +258,19 @@
   elements.deleteDialog.addEventListener("close", () => {
     if (elements.deleteDialog.returnValue === "confirm") confirmDeletion();
   });
+  elements.themeToggle.addEventListener("change", () => {
+    const theme = elements.themeToggle.checked ? "dark" : "light";
+    try {
+      localStorage.setItem(THEME_KEY, theme);
+    } catch (error) {
+      console.warn("无法保存主题偏好。", error);
+    }
+    applyTheme(theme);
+  });
   elements.title.addEventListener("input", updateSelectedNote);
   elements.content.addEventListener("input", updateSelectedNote);
 
+  applyTheme(loadTheme());
   saveState();
   render();
 })();

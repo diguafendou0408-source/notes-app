@@ -1,5 +1,5 @@
 :root {
-  color-scheme: dark;
+  color-scheme: light;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
   color: #40256f;
   background: #edf4ff;
@@ -126,6 +126,45 @@ h1 { margin: 0; font-size: 1.35rem; letter-spacing: -0.03em; }
 .confirm-delete-button { border: 1px solid #b83c31; color: #fff; background: #b83c31; }
 .confirm-delete-button:hover { background: #972f26; }
 
+.theme-control { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 18px; padding: 12px 10px 2px; border-top: 1px solid #b9d1f5; }
+.theme-label { color: #50347b; font-size: 0.82rem; font-weight: 750; }
+.theme-switch { position: relative; display: inline-flex; cursor: pointer; }
+.theme-switch input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+.theme-track { display: flex; align-items: center; width: 48px; height: 27px; padding: 3px; border-radius: 999px; background: #9dc2f3; box-shadow: inset 0 1px 2px rgba(19, 54, 111, 0.22); transition: background 0.2s ease; }
+.theme-thumb { display: block; width: 21px; height: 21px; border-radius: 50%; background: #fff; box-shadow: 0 1px 4px rgba(23, 40, 70, 0.28); transform: translateX(0); transition: transform 0.2s ease; }
+.theme-switch input:checked + .theme-track { background: #5b54b7; }
+.theme-switch input:checked + .theme-track .theme-thumb { transform: translateX(21px); }
+.theme-switch input:focus-visible + .theme-track { outline: 3px solid #b99ae6; outline-offset: 3px; }
+
+.theme-dark { color-scheme: dark; }
+.theme-dark body { color: #e6eaff; background: #0e1119; }
+.theme-dark .app-shell { background: #151a26; box-shadow: 0 0 44px rgba(0, 0, 0, 0.38); }
+.theme-dark .sidebar { background: linear-gradient(180deg, #1a2336 0%, #111827 100%); border-right-color: #33445e; }
+.theme-dark .sidebar-header { background: #05070c; }
+.theme-dark .note-count, .theme-dark .note-item-preview { color: #abb9d2; }
+.theme-dark .note-item { color: #eef4ff; }
+.theme-dark .note-item:hover { background: #26354d; }
+.theme-dark .note-item.is-active { border-color: #7968c9; background: #202a3c; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25); }
+.theme-dark .theme-control { border-top-color: #33445e; }
+.theme-dark .theme-label { color: #d7e5ff; }
+.theme-dark .editor-panel { background: #151a26; }
+.theme-dark .note-meta, .theme-dark .pane-hint { color: #a9b7cf; }
+.theme-dark .note-title { color: #eef5ff; background: #24334a; }
+.theme-dark .note-title::placeholder, .theme-dark .note-content::placeholder { color: #8ea2c2; }
+.theme-dark .preview-pane { border-left-color: #34465f; }
+.theme-dark .pane-heading { border-bottom-color: #34465f; color: #d9e7ff; }
+.theme-dark .note-preview { color: #dce8ff; }
+.theme-dark .note-preview h1, .theme-dark .note-preview h2, .theme-dark .note-preview h3, .theme-dark .note-preview h4, .theme-dark .note-preview h5, .theme-dark .note-preview h6 { color: #f1f5ff; }
+.theme-dark .note-preview blockquote { border-left-color: #79aef2; color: #b9c9e4; }
+.theme-dark .note-preview hr { border-top-color: #34465f; }
+.theme-dark .note-preview code { color: #d8c6ff; background: #29213d; }
+.theme-dark .note-preview pre { background: #0d1118; }
+.theme-dark .preview-placeholder { color: #9db0ca; }
+.theme-dark .empty-icon { color: #bed9ff; background: #223654; }
+.theme-dark .empty-state p, .theme-dark .confirm-dialog p { color: #b7c3d8; }
+.theme-dark .confirm-dialog { color: #edf4ff; background: #1c2433; box-shadow: 0 18px 55px rgba(0, 0, 0, 0.45); }
+.theme-dark .cancel-button { border-color: #46556d; color: #e4ecff; background: #273345; }
+
 @media (max-width: 840px) {
   .editor { padding-right: clamp(22px, 4vw, 48px); padding-left: clamp(22px, 4vw, 48px); }
   .editor-workspace { gap: 14px; }
@@ -144,4 +183,6 @@ h1 { margin: 0; font-size: 1.35rem; letter-spacing: -0.03em; }
   .editor-workspace { min-height: 520px; grid-template-columns: 1fr; gap: 28px; }
   .preview-pane { border-top: 1px solid #c9dcf8; border-left: 0; padding-top: 20px; padding-left: 0; }
   .note-content, .note-preview { min-height: 230px; }
+  .theme-control { margin-top: 14px; }
+  .theme-dark .sidebar { border-bottom-color: #33445e; }
 }
